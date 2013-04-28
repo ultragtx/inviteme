@@ -1,12 +1,31 @@
 <div class="login-form">
 <h2>Take a code</h2>
 
-
-
+<!-- <div>Title:</div>
 <div><%= @current_invite_item.title %></div>
-<div><%= @current_invite_item.url %></div>
-<div><%= @current_invite_item.description %></div>
+<div>URL:</div>
+<div><%= auto_link(@current_invite_item.url) %></div>
+<div>Description:</div>
+<div><%= @current_invite_item.description %></div> -->
 
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <td>Title</td>
+      <td><%= @current_invite_item.title %></td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td><%= auto_link("@current_invite_item.url") %></td>
+    </tr>
+	<% if @current_invite_item.description && @current_invite_item.description.length > 0%>
+    <tr>
+      <td>Desc</td>
+      <td><%= @current_invite_item.description %></td>
+    </tr>
+	<% end %>
+  </tbody>
+</table>
 
 <!-- <div class="input-append">
 	<input class="span2" id="appendedInputButton" type="text">

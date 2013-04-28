@@ -40,8 +40,12 @@ body {
 	box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.row {
+	margin: -20px;
+}
+
 .login-form {
-	margin-left: 65px;
+	margin: 45px;
 }
 	
 legend {
@@ -55,6 +59,6 @@ legend {
 }
 
 input.span2, textarea.span2, .uneditable-input.span2 {
-	width: 200px;
+	width: 260px;
 	cursor: auto;
 }
