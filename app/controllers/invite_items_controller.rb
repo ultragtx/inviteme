@@ -44,7 +44,7 @@ class InviteItemsController < ApplicationController
 
     # Split invite code string to invite_codes
     for invite_code_content in @invite_item.codes_str.split
-      invite_code = InviteCode.new(content: invite_code_content)
+      invite_code = InviteCode.new(content: invite_code_content, taken: false)
       invite_code.save
       @invite_item.invite_codes << invite_code
     end
