@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  has_many :invite_items
+  has_many :invite_codes
   # attr_accessible :title, :body
 
   def admin?
