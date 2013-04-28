@@ -1,0 +1,25 @@
+<h1>Listing invite_codes</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Taken</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @invite_codes.each do |invite_code| %>
+  <tr>
+    <td><%= invite_code.content %></td>
+    <td><%= invite_code.taken %></td>
+    <td><%= link_to 'Show', invite_code %></td>
+    <td><%= link_to 'Edit', edit_invite_code_path(invite_code) %></td>
+    <td><%= link_to 'Destroy', invite_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Invite code', new_invite_code_path %>

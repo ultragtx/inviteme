@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @invite_item.title %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @invite_item.url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @invite_item.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_invite_item_path(@invite_item) %> |
+<%= link_to 'Back', invite_items_path %>
