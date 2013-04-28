@@ -15,8 +15,8 @@
 
 <%= form_tag({controller: '/invite_codes', action: 'update', id: @current_invite_item.id}, {method: 'put', remote: true} ) do %>
 <div class="input-append">
-  <input class="span2" id="appendedInputButton" type="text">
-  <%= submit_tag "Take One", class: "btn" %>
+  <input class="span2" id="codeinput" type="text" placeholder="Press the button to get a code" readonly>
+  <%= submit_tag "Take One", class: "btn", id: "codebutton" %>
 </div>
 
 <% end %>

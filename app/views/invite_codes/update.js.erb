@@ -1,5 +1,11 @@
 <% if @invite_code %>
+$("#codeinput").val("<%= @invite_code.content %>")
 alert("Take");
 <% else %>
 alert("None Left");
+$("#codeinput").val("╮(╯▽╰)╭")
 <% end%>
+
+
+$("#codebutton").attr('disabled','disabled');
+$("#codebutton").attr('value', '   Taken   ');
