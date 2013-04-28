@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20130428084300) do
     t.string   "title"
     t.string   "url"
     t.text     "description"
+    t.string   "rand_key"
+    t.string   "public"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"

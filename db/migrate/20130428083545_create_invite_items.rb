@@ -4,6 +4,8 @@ class CreateInviteItems < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.text :description
+      t.string :rand_key
+      t.string :public
 
       t.timestamps
     end
