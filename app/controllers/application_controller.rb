@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
+  layout 'center_box'
   protect_from_forgery
+  
 
   def login_required
     if current_user.blank?
