@@ -1,4 +1,6 @@
 Inviteme::Application.routes.draw do
+  get "account" => "user_page#account"
+
   get 'take/:key' => "take#index"
 
   resources :invite_codes

@@ -1,0 +1,67 @@
+<div class="summary-page">
+	<h2>Status</h2>
+
+	<div class="tabbable" style="margin-bottom: 18px;">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#tab1" data-toggle="tab">Shared</a></li>
+			<li class=""><a href="#tab2" data-toggle="tab">Take</a></li>
+		</ul>
+		<div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+			<div class="tab-pane active" id="tab1">
+				<% if @current_invite_items.count > 0%>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Title</th>
+							<th>URL</th>
+							<th>Taken</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @current_invite_items.each_with_index do |invite_item, index| %>
+						<tr>
+							<td><%= index + 1 %></td>
+							<td><%= invite_item.title %></td>
+							<td><%= auto_link(invite_item.url) %></td>
+							<td><%= invite_item.invite_codes.count %></td>
+							<td><%= InviteCode.where(invite_item_id: invite_item.id, taken: true).count %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<% else %>
+				<p>You haven't shared any invitation code.</p>
+				<% end%>
+			</div>
+			<div class="tab-pane" id="tab2">
+				<% if @current_invite_codes.count > 0%>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Title</th>
+							<th>URL</th>
+							<th>Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @current_invite_codes.each_with_index do |invite_code, index| %>
+						<tr>
+							<td><%= index + 1 %></td>
+							<td><%= invite_code.invite_item.title %></td>
+							<td><%= auto_link(invite_code.invite_item.url) %></td>
+							<td><%= invite_code.content %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<% else %>
+				<p>You haven't take any invitation code.</p>
+				<% end%>
+				
+			</div>
+		</div>
+	</div>
+</div>
