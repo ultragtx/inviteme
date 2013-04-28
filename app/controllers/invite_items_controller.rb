@@ -42,6 +42,18 @@ class InviteItemsController < ApplicationController
   def create
     @invite_item = InviteItem.new(params[:invite_item])
 
+    # Split invite code string to invite_codes
+    for invite_code_content in @invite_item.codes_str.split
+      invite_code = InviteCode.new(content: invite_code_content)
+      invite_code.save
+      @invite_item.invite_codes << invite_code
+    end
+    
+    # Generate rand_key
+    rand_key = Digest::MD5.hexdigest(@invite_item.title + Time.now.to_s)
+    # TODO: Check rand_key unique 
+    @invite_item.rand_key = rand_key
+
     respond_to do |format|
       if @invite_item.save
         format.html { redirect_to @invite_item, notice: 'Invite item was successfully created.' }
