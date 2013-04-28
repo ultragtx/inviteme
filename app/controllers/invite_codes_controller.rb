@@ -57,17 +57,22 @@ class InviteCodesController < ApplicationController
   # PUT /invite_codes/1.json
   def update
     # make as taken
-    @invite_code = InviteCode.find(params[:id])
-    @invite_code.taken = true
-    @invite_code.user_id = current_user
-
+    @invite_item = InviteItem.find(params[:id])
+    @invite_code = InviteCode.where(invite_item_id: @invite_item.id, taken: false).first
+    
+    if @invite_code
+      @invite_code.taken = true
+      @invite_code.user_id = current_user
+    end
+    
     respond_to do |format|
-      if @invite_code.save
+      if @invite_code && @invite_code.save
         format.html { redirect_to @invite_code, notice: 'Invite code was successfully updated.' }
         format.js # update.js.erb
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js # update.js.erb
         format.json { render json: @invite_code.errors, status: :unprocessable_entity }
       end
     end
