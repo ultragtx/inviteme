@@ -1,4 +1,5 @@
 class InviteItemsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /invite_items
   # GET /invite_items.json
   def index
@@ -53,6 +54,8 @@ class InviteItemsController < ApplicationController
     rand_key = Digest::MD5.hexdigest(@invite_item.title + Time.now.to_s)
     # TODO: Check rand_key unique 
     @invite_item.rand_key = rand_key
+    
+    @invite_item.user_id = current_user.id
 
     respond_to do |format|
       if @invite_item.save

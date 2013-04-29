@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div class="login-form">
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
+<!-- <p>
   <b>Title:</b>
   <%= @invite_item.title %>
 </p>
@@ -13,8 +14,11 @@
 <p>
   <b>Description:</b>
   <%= @invite_item.description %>
-</p>
+</p> -->
 
+<h3>Share this link to your friends</h3>
+<pre><%= Setting.domain + '/take/' + @invite_item.rand_key %></pre>
 
-<%= link_to 'Edit', edit_invite_item_path(@invite_item) %> |
-<%= link_to 'Back', invite_items_path %>
+<!-- <%= link_to 'Edit', edit_invite_item_path(@invite_item) %> |
+<%= link_to 'Back', invite_items_path %> -->
+</div>
