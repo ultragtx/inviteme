@@ -56,13 +56,15 @@ class InviteCodesController < ApplicationController
   # PUT /invite_codes/1
   # PUT /invite_codes/1.json
   def update
-    # make as taken
+    # mark as taken
     @invite_item = InviteItem.find(params[:id])
     @invite_code = InviteCode.where(invite_item_id: @invite_item.id, taken: false).first
     
     if @invite_code
       @invite_code.taken = true
-      @invite_code.user_id = current_user.id
+      user_id = nil
+      user_id = current_user.id if user_signed_in?
+      @invite_code.user_id = user_id
     end
     
     respond_to do |format|

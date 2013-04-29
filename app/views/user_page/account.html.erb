@@ -28,7 +28,7 @@
 							<td><%= auto_link(invite_item.url) %></td>
 							<td><%= InviteCode.where(invite_item_id: invite_item.id, taken: true).count %></td>
 							<td><%= invite_item.invite_codes.count %></td>
-							<td><%= Setting.domain + '/take/' + invite_item.rand_key %></td>
+							<td><%= request.protocol + request.host_with_port + '/take/' + invite_item.rand_key %></td>
 						</tr>
 						<% end %>
 					</tbody>
