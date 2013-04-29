@@ -62,7 +62,7 @@ class InviteCodesController < ApplicationController
     
     if @invite_code
       @invite_code.taken = true
-      @invite_code.user_id = current_user
+      @invite_code.user_id = current_user.id
     end
     
     respond_to do |format|
