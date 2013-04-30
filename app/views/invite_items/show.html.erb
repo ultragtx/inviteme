@@ -17,7 +17,7 @@
 </p> -->
 
 <h3>Share this link to your friends</h3>
-<pre><%= Setting.domain + '/take/' + @invite_item.rand_key %></pre>
+<pre><%= request.protocol + request.host_with_port + '/take/' + @invite_item.rand_key %></pre>
 
 <!-- <%= link_to 'Edit', edit_invite_item_path(@invite_item) %> |
 <%= link_to 'Back', invite_items_path %> -->
